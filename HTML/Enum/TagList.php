@@ -1,6 +1,8 @@
 <?php
 #region usings
 namespace de\fburghardt\Library\HTML\Enum;
+
+use de\fburghardt\Library\Enum\IEnumBase;
 #endregion
 
 /**
@@ -9,7 +11,7 @@ namespace de\fburghardt\Library\HTML\Enum;
  * @author Florian Burghardt
  * @copyright Copyright (c) 2023, Florian Burghardt
  */
-enum TagList: string
+enum TagList: string implements IEnumBase
 {
 	case Address = 'Area/Address';
 	case Article = 'Area/Article';
@@ -119,5 +121,14 @@ enum TagList: string
 	case Body = 'Body';
 	case HTML = 'HTML';
 	case Head = 'Head';
+	
+	public static function case(string $keyword): self|null
+	{ 
+		foreach (self::cases() as $item)
+		{
+			if($item->name === $keyword) { return $item; }
+		}
+		return null;
+	}
 }
 ?>
