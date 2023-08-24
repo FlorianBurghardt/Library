@@ -14,9 +14,26 @@ interface IEnumBase
 	/**
 	 * Finds and returns the Enum object with the given keyword.
 	 * @param string $keyword The keyword to search for Enum.
+	 * @return self The found Enum object
+	 * @throws NotFoundException The keyword is not an element of Enum if not found.
+	 * @copyright Implementation:
+	 * - public static function get(string $keyword): self
+	 * - { 
+	 * - - foreach (self::cases() as $item)
+	 * - - { 
+	 * - - - if($item->name === $keyword) { return $item; }
+	 * - - }
+	 * - - trrow new NotFoundException($keyword.' is not an element of the Enum', StatusCode::NOT_FOUND->value, 9200);
+	 * - }
+	 */
+	public static function get(string $keyword): self;
+
+	/**
+	 * Finds and returns the Enum object with the given keyword.
+	 * @param string $keyword The keyword to search for Enum.
 	 * @return self|null The found Enum object or null if not found.
 	 * @copyright Implementation:
-	 * - public static function case(string $keyword): self|null
+	 * - public static function tryGet(string $keyword): self|null
 	 * - { 
 	 * - - foreach (self::cases() as $item)
 	 * - - { 
@@ -25,7 +42,7 @@ interface IEnumBase
 	 * - - return null;
 	 * - }
 	 */
-	public static function case(string $keyword): self|null;
+	public static function tryGet(string $keyword): self|null;
 
 	// Enum default Methods:
 

@@ -20,4 +20,7 @@ __________________ AbstractStructure HTML _________________
 [413] PAYLOAD_TOO_LARGE
 	[9104] Max recursion depth reached (AbstractStructure::createTag)
 
+__________________ IEnumBase Implementation _______________
+[404] NOT_FOUND
+	[9200] [xxx] is not an element of Enum (IEnumBase::get)
 ___________________________________________________________

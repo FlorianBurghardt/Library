@@ -3,6 +3,8 @@
 namespace de\fburghardt\Library\HTML\Enum;
 
 use de\fburghardt\Library\Enum\IEnumBase;
+use de\fburghardt\Library\Enum\StatusCode;
+use de\fburghardt\Library\Exception\NotFoundException;
 #endregion
 
 /**
@@ -122,7 +124,19 @@ enum TagList: string implements IEnumBase
 	case HTML = 'HTML';
 	case Head = 'Head';
 	
-	public static function case(string $keyword): self|null
+	public static function get(string $keyword): self
+	{ 
+		foreach (self::cases() as $item)
+		{
+			if($item->name === $keyword) { return $item; }
+		}
+		throw new NotFoundException(
+			$keyword.' is not an element of the Enum',
+			StatusCode::NOT_FOUND->value,
+			9200);
+	}
+
+	public static function tryGet(string $keyword): self|null
 	{ 
 		foreach (self::cases() as $item)
 		{
