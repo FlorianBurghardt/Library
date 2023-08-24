@@ -145,6 +145,20 @@ class TagInformation
                     exit();
                 }
                 break;
+            case TagListType::PriFormatedEnumList:
+                ksort($namespaces);
+                asort($namespaces);
+                $result = '';
+                foreach ($namespaces as $key => $value)
+                {
+                    if($value == 'Tag') { $result .= 'case '.$key." = '".$key."';<br/>"; }
+                    else { $result .= 'case '.$key." = '".$value.'/'.$key."';<br/>"; }
+                }
+                echo("<pre>");
+                print_r($result);
+                echo("</pre>");
+                exit();
+                break;
             default:
                 $result = '';
         }
