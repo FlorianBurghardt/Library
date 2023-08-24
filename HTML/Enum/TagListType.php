@@ -15,5 +15,6 @@ enum TagListType
 	case Array;
 	case TagList;
 	case SubNamespaceList;
+	case PriFormatedEnumList;
 }
 ?>
