@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Media;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractMedia;
 #endregion
 
@@ -21,7 +22,7 @@ class Iframe extends AbstractMedia
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Iframe'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Iframe; }
 		parent::__construct($input, $tagID);
 		$this->mapIframe();
 	}

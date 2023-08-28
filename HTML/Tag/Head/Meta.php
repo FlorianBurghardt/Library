@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Head;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Body;
 #endregion
 
@@ -17,7 +18,7 @@ final class Meta extends Body
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Meta'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Meta; }
 		$this->onlyOpenTag = true;
 		parent::__construct($input, $tagID);
 		$this->mapMeta();

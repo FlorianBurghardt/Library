@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Head;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Body;
 #endregion
 
@@ -22,7 +23,7 @@ final class Script extends Body
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Script'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Script; }
 		parent::__construct($input, $tagID);
 		$this->mapScript();
 	}

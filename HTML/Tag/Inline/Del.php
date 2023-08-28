@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Inline;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Block\Blockquote;
 #endregion
 
@@ -14,7 +15,7 @@ class Del extends Blockquote
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Del'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Del; }
 		parent::__construct($input, $tagID);
 		$this->mapDel();
 	}

@@ -2,11 +2,9 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Example;
 
-use de\fburghardt\Library\Helper\Display;
 use de\fburghardt\Library\Helper\JSON;
 use de\fburghardt\Library\HTML\Enum\TagListType;
 use de\fburghardt\Library\HTML\Tag\Body;
-
 #endregion
 
 /**
@@ -27,10 +25,18 @@ class TagInformation
      * @param bool $printToScreenOrReturn Print to screen (true) or return result (false)
      * @return mixed
      */
-    public static function listTagInfos(TagListType $resultType = TagListType::JSON, bool $printToScreenOrReturn = true): mixed
+    public static function listTagInfos(
+        TagListType $resultType = TagListType::JSON,
+        bool $printToScreenOrReturn = true,
+        bool $inheritsFrom = true,
+        bool $inheritsClassNameincludingNamespace = false): mixed
     {
         self::readDirs();
-        $result = self::tagList($resultType, $printToScreenOrReturn);
+        $result = self::tagList(
+            $resultType,
+            $printToScreenOrReturn,
+            $inheritsFrom,
+            $inheritsClassNameincludingNamespace);
         return $result;
     }
     private static function readDirs(string|null $path = null): void
@@ -50,9 +56,13 @@ class TagInformation
         }
     }
 
-    private static function tagList(TagListType $resultType, bool $printToScreenOrReturn): mixed
+    private static function tagList(
+        TagListType $resultType,
+        bool $printToScreenOrReturn,
+        bool $inheritsFrom = true,
+        bool $inheritsClassNameincludingNamespace = false): mixed
     {
-        $object = new Body(null, 'Boby');
+        $object = new Body(null, 'Body');
         $namespaces = ['Body'=>'Tag'];
         foreach (self::$list as $item)
         {
@@ -82,7 +92,9 @@ class TagInformation
                     if ($i > 0) { $result .= ', '; }
                     $i++;
                     $item = $object::getTagById($element);
-                    $result .= ('"'.$element.'": '.JSON::encode($item->getAllPossibleAttributes()));
+                    $result .= '"'.$element.'": '.JSON::encode(
+                        $item->getAllPossibleAttributes($inheritsFrom, $inheritsClassNameincludingNamespace));
+                    
                 }
                 $result .= '}';
                 if ($printToScreenOrReturn)
@@ -98,7 +110,9 @@ class TagInformation
                 $result = [];
                 foreach ($elements as $element)
                 {
-                    $array = $object::getTagById($element)->getAllPossibleAttributes();
+                    $array = $object::getTagById($element)->getAllPossibleAttributes(
+                        $inheritsFrom,
+                        $inheritsClassNameincludingNamespace);
                     ksort($array);
                     $result[strtolower($element)] = $array;
                 }

@@ -1,6 +1,9 @@
 <?php
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Media;
+
+use de\fburghardt\Library\HTML\Enum\TagList;
+
 #endregion
 
 class Meter extends Progress
@@ -16,7 +19,7 @@ class Meter extends Progress
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Meter'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Meter; }
 		$this->templateFile = 'double_after.html';
 		parent::__construct($input, $tagID);
 		$this->mapMeter();

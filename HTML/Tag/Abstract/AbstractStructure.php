@@ -2,13 +2,13 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Abstract;
 
-use de\fburghardt\Library\Enum\StatusCode;
 use de\fburghardt\Library\Exception\ConflictException;
 use de\fburghardt\Library\Exception\NotAcceptableException;
 use de\fburghardt\Library\Exception\NotFoundException;
 use de\fburghardt\Library\Exception\PayloadTooLargeException;
 use de\fburghardt\Library\Helper\JSON;
 use de\fburghardt\Library\HTML\Enum\ContentType;
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\Response\ForbiddenMethods;
 #endregion
 
@@ -26,7 +26,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 	#region properties
 	protected string $templateFolder;
 	protected string $templateFile;
-	protected string $tagType;
+	protected TagList $tagType;
 	protected bool $onlyOpenTag = false;
 	protected array|null $input = null;
 
@@ -43,10 +43,10 @@ abstract class AbstractStructure extends ForbiddenMethods
 	 * Abstract constructor for several HTML Tag generation Classes
 	 * @param array|null $input Named input array for tag attributes
 	 * @param string|null $tagID Tag ID has to be unique when used otherwise a unique ID will be generated
-	 * @property string $this->tagType
+	 * @property TagList $this->tagType
 	 * - Have to be set in child constructor before calling parent constructor.
 	 * - Defines tag name of HTML-Element Tag.
-	 * - Example: $this->tagType = 'Body' => \<body \%ATTRIBUTES\%\>\%CONTENT\%\<\/body\>
+	 * - Example: $this->tagType = TagList::Body => \<body \%ATTRIBUTES\%\>\%CONTENT\%\<\/body\>
 	 * @property bool $this->onlyOpenTag (Default: false)
 	 * - Have to be set in child constructor before calling parent constructor.
 	 * - Generate only open tag (self-closing tag).
@@ -56,7 +56,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 	 * - {
 	 * - $this->input = $input;
 	 * - $this->map();
-	 * - if (!isset($this->tagType)) { $this->tagType = 'Meta'; }
+	 * - if (!isset($this->tagType)) { $this->tagType = TagList::Meta; }
 	 * - $this->onlyOpenTag = true;
 	 * - parent::__construct($this->input, $tagID);
 	 * - }
@@ -208,14 +208,17 @@ abstract class AbstractStructure extends ForbiddenMethods
 	
 	/**
 	 * Get all possible tag attributes with their required types
+	 * @param bool $inheritsFrom [Default: true] If true, inherit from parent class.
+	 * @param bool $inheritsClassNameincludingNamespace [Default: true] Class name including namespace if true. If false, only class name.
 	 * @return array Properties: 'Name' => [' Property['Type], Property[Description] ]
 	 */
-	public final function getAllPossibleAttributes(): array
+	public final function getAllPossibleAttributes(bool $inheritsFrom = true, bool $inheritsClassNameincludingNamespace = false): array
 	{
 		$reflector = new \ReflectionClass(get_called_class());
 		$properties = $reflector->getProperties(\ReflectionProperty:: IS_PRIVATE | \ReflectionProperty::IS_PROTECTED | \ReflectionProperty::IS_PUBLIC);
 		$skip = ['', 'templateFolder', 'templateFile', 'onlyOpenTag', 'input', 'tagType', 'allTags', 'tagCount', 'tags', 'openTag', 'closeTag'];
 		$result = [];
+		if ($inheritsFrom) { $result["InheritsFrom"] = $this->getParentClassName($inheritsClassNameincludingNamespace); }
 		foreach ($properties as $property)
 		{
 			if (!array_search($property->getName(), $skip))
@@ -231,6 +234,21 @@ abstract class AbstractStructure extends ForbiddenMethods
 			}
 		}
 		return $result;
+	}
+	
+	/**
+	 * Get parent class name of called class
+	 * @param bool $inheritsClassNameincludingNamespace [Default: true] Class name including namespace if true. If false, only class name.
+	 * @return string Parent class name
+	 */
+	public final function getParentClassName(bool $inheritsClassNameincludingNamespace = false): string
+	{
+		$className = get_parent_class(get_called_class());
+		if ($inheritsClassNameincludingNamespace) { return $className; }
+
+		$offset = strrpos($className, '\\');
+		$className = substr($className, $offset+1);
+		return $className;
 	}
 
 	/**
@@ -338,7 +356,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			$templateContent = file_get_contents($tepmlatePath);
 
-			if (stripos($templateContent, '%TAG%')) { $templateContent = str_replace('%TAG%', strtolower($this->tagType), $templateContent); }
+			if (stripos($templateContent, '%TAG%')) { $templateContent = str_replace('%TAG%', strtolower($this->tagType->name), $templateContent); }
 
 			$divider = (stripos($templateContent, '%DIVIDER%')) ? stripos($templateContent, '%DIVIDER%') : strlen($templateContent);
 			
@@ -379,7 +397,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		else if (!is_null($tagID)) { self::$allTags[$tagID] = $this; }
 		else
 		{
-			self::$allTags[self::$tagCount.'_'.$this->tagType] = $this;
+			self::$allTags[self::$tagCount.'_'.$this->tagType->name] = $this;
 			self::$tagCount++;
 		}
 	}

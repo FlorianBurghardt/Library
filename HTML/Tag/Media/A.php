@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Media;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractLink;
 #endregion
 
@@ -15,7 +16,7 @@ class A extends AbstractLink
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'A'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::A; }
 		parent::__construct($input, $tagID);
 		$this->mapA();
 	}
