@@ -19,8 +19,8 @@ class MyException extends \Exception
 	#region constructor
 	public function __construct(
 		string $message = "",
-		int $code = 0,
 		int $innerCode = 0,
+		int $code = 0,
 		\Throwable|null $previous = null)
 	{
 		parent::__construct($message, $code, $previous);
