@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Head;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Body;
 #endregion
 
@@ -21,7 +22,7 @@ final class Link extends Body
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Link'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Link; }
 		$this->onlyOpenTag = true;
 		parent::__construct($input, $tagID);
 		$this->mapLink();

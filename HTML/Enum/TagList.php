@@ -18,7 +18,7 @@ enum TagList: string implements IEnumBase
 	case Address = 'Area/Address';
 	case Article = 'Area/Article';
 	case Aside = 'Area/Aside';
-	case Foolter = 'Area/Footer';
+	case Footer = 'Area/Footer';
 	case Header = 'Area/Header';
 	case Main = 'Area/Main';
 	case Nav = 'Area/Nav';

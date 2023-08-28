@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Form;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Body;
 #endregion
 
@@ -15,7 +16,7 @@ class Optgroup extends Body
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Optgroup'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Optgroup; }
 		parent::__construct($input, $tagID);
 		$this->mapOptgroup();
 	}

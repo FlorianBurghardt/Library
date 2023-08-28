@@ -6,6 +6,7 @@ use de\fburghardt\Library\HTML\DTO\AriaDTO;
 use de\fburghardt\Library\HTML\DTO\DataDTO;
 use de\fburghardt\Library\HTML\DTO\JavaScriptBodyEventDTO;
 use de\fburghardt\Library\HTML\DTO\JavaScriptEventDTO;
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractStructure;
 #endregion
 
@@ -35,7 +36,7 @@ class Body extends AbstractStructure
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Body'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Body; }
 		parent::__construct($input, $tagID);
 		$this->mapBody();
 		if (isset($this->input['data'])) { $this->mapData($this->input['data']); }

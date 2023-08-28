@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Media;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractMedia;
 #endregion
 
@@ -14,7 +15,7 @@ class Embed extends AbstractMedia
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Embed'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Embed; }
 		parent::__construct($input, $tagID);
 		$this->mapEmbed();
 	}

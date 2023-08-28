@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Media;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractPlayable;
 #endregion
 
@@ -16,7 +17,7 @@ class Video extends AbstractPlayable
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Video'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Video; }
 		parent::__construct($input, $tagID);
 		$this->mapVideo();
 	}

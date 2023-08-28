@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Lists;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractList;
 #endregion
 
@@ -15,7 +16,7 @@ class Ol extends AbstractList
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Ol'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Ol; }
 		parent::__construct($input, $tagID);
 		$this->mapOl();
 	}

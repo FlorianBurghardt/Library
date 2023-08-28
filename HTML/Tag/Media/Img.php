@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Media;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Abstract\AbstractMedia;
 #endregion
 
@@ -21,7 +22,7 @@ class Img extends AbstractMedia
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Img'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Img; }
 		parent::__construct($input, $tagID);
 		$this->mapImg();
 	}

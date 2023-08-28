@@ -2,10 +2,10 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag;
 
-use de\fburghardt\Library\HTML\Tag\Abstract\AbstractStructure;
+use de\fburghardt\Library\HTML\Enum\TagList;
 #endregion
 
-final class HTML extends AbstractStructure
+final class HTML extends Body
 {
 	#region properties
 	protected string|null $lang		/** @property Defines-the-language */;
@@ -16,7 +16,7 @@ final class HTML extends AbstractStructure
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'HTML'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::HTML; }
 		$this->templateFile = 'html.html';
 		parent::__construct($input, $tagID);
 		$this->mapHTML();

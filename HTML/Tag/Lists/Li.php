@@ -2,6 +2,7 @@
 #region usings
 namespace de\fburghardt\Library\HTML\Tag\Lists;
 
+use de\fburghardt\Library\HTML\Enum\TagList;
 use de\fburghardt\Library\HTML\Tag\Body;
 #endregion
 
@@ -13,7 +14,7 @@ class Li extends Body
 	#region constructor
     public function __construct(array|null $input = null, string|null $tagID = null)
 	{
-		if (!isset($this->tagType)) { $this->tagType = 'Li'; }
+		if (!isset($this->tagType)) { $this->tagType = TagList::Li; }
 		parent::__construct($input, $tagID);
 		$this->mapLi();
 	}
