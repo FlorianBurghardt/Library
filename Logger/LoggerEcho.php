@@ -24,10 +24,7 @@ class LoggerEcho extends Logger
 	private function __clone() {}
 	public static function getInstance(string $logArea): LoggerEcho
 	{
-		if (self::$instance === null)
-		{
-			self::$instance = new LoggerEcho();
-		}
+		if (self::$instance === null) { self::$instance = new LoggerEcho(); }
 		return self::$instance;
 	}
 	#endregion

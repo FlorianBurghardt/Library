@@ -23,10 +23,7 @@ class LoggerVoid extends Logger
 	private function __clone() {}
 	public static function getInstance(string $logArea): LoggerVoid
 	{
-		if (self::$instance === null)
-		{
-			self::$instance = new LoggerVoid();
-		}
+		if (self::$instance === null) { self::$instance = new LoggerVoid(); }
 		return self::$instance;
 	}
 	#endregion

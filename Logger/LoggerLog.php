@@ -51,8 +51,7 @@ class LoggerLog extends Logger
 		}
 		if (
 			$currentLogLevel !== LogLevel::NOTHING->value &&
-			$logLevel->value <= $currentLogLevel
-		)
+			$logLevel->value <= $currentLogLevel)
 		{
 			if (!is_string($message)) { $message = JSON::encode($message); }
 			date_default_timezone_set('Europe/Berlin');

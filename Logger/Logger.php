@@ -32,8 +32,7 @@ abstract class Logger extends ForbiddenMethods implements ILogger
 			$this->response->getStatusTitle().' '.
 			$this->response->getMessage(),										/*Mail subject*/
 			$this->response->getEmailResponse($this->response->getResult()),	/*Message*/
-			'From: '.$_SERVER['config']['namespace']['from_email']				/*Additional headers*/
-		);
+			'From: '.$_SERVER['config']['namespace']['from_email']);			/*Additional headers*/
 
 		// Hide result content in response
 		$this->response->setResult(null);

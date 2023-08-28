@@ -1,6 +1,8 @@
 <?php
 #region usings
 namespace de\fburghardt\Library\Exception;
+
+use de\fburghardt\Library\Enum\StatusCode;
 #endregion
 
 /**
@@ -10,5 +12,22 @@ namespace de\fburghardt\Library\Exception;
  * @author Florian Burghardt
  * @copyright Copyright (c) 2023, Florian Burghardt
  */
-class PayloadTooLargeException extends MyException {}
+class PayloadTooLargeException extends MyException
+{
+    private StatusCode $statusCode = StatusCode::PAYLOAD_TOO_LARGE;
+
+	public function __construct(
+		string|null $message = null,
+		int $innerCode = 0,
+		int|null $code = null,
+		\Throwable|null $previous = null)
+	{
+		if (!is_null($message)) { $message = $message; }
+		else { $message = "Payload Too Large"; }
+		if (!is_null($code)) { $code = StatusCode::tryfrom($code); }
+		if (!is_null($code)) { $this->statusCode = $code; }
+
+		parent::__construct($message, $innerCode, $this->statusCode->value, $previous);
+	}
+}
 ?>

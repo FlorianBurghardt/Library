@@ -71,9 +71,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			throw new NotAcceptableException(
 				'TagType is not set',
-				StatusCode::NOT_ACCEPTABLE->value,
-				9100
-			);
+				9100);
 		}
 		$this->addTagID($tagID);
 
@@ -180,9 +178,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 			default:
 				throw new NotAcceptableException(
 					'Given content type: "'.$type.'" is no valid enum value',
-					StatusCode::NOT_ACCEPTABLE->value,
-					9106
-				);
+					9106);
 				break;
 		}
 	}
@@ -249,9 +245,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			throw new NotFoundException(
 				'JSON Tag template not found: '.$jsonFilePath,
-				StatusCode::NOT_FOUND->value,
-				9103
-			);
+				9103);
 		}
 		return $json;
 	}
@@ -269,9 +263,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			throw new PayloadTooLargeException(
 				'Max recursion depth reached',
-				StatusCode::PAYLOAD_TOO_LARGE->value,
-				9104
-			);
+				9104);
 		}
 		$maxRecursion--;
 
@@ -292,18 +284,13 @@ abstract class AbstractStructure extends ForbiddenMethods
 					$this->add($object, 'CONTENT', $position);
 
 					// Add child tags
-					if (isset($contentItem['innerContent']))
-					{
-						$object->createContent($contentItem['innerContent'], $maxRecursion);
-					}
+					if (isset($contentItem['innerContent'])) { $object->createContent($contentItem['innerContent'], $maxRecursion); }
 				}
 				else
 				{
 					throw new NotFoundException(
 						'Class not found: '.$class,
-						StatusCode::NOT_FOUND->value,
-						9105
-					);
+						9105);
 				}
 			}
 			else if (isset($contentItem['content']))
@@ -315,9 +302,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 			{
 				throw new NotFoundException(
 					'Invalid scheme: '.JSON::encode($contentItem),
-					StatusCode::NOT_FOUND->value,
-					9106
-				);
+					9106);
 			}
 		}
 	}
@@ -353,10 +338,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			$templateContent = file_get_contents($tepmlatePath);
 
-			if (stripos($templateContent, '%TAG%'))
-			{
-				$templateContent = str_replace('%TAG%', strtolower($this->tagType), $templateContent);
-			}
+			if (stripos($templateContent, '%TAG%')) { $templateContent = str_replace('%TAG%', strtolower($this->tagType), $templateContent); }
 
 			$divider = (stripos($templateContent, '%DIVIDER%')) ? stripos($templateContent, '%DIVIDER%') : strlen($templateContent);
 			
@@ -367,9 +349,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			throw new NotFoundException(
 				'Template file not found: '.$tepmlatePath,
-				StatusCode::NOT_FOUND->value,
-				9102
-			);
+				9102);
 		}
 	}
 
@@ -394,9 +374,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 		{
 			throw new ConflictException(
 				'Tag ID ['.$tagID.'] already exists',
-				StatusCode::CONFLICT->value,
-				9101
-			);
+				9101);
 		}
 		else if (!is_null($tagID)) { self::$allTags[$tagID] = $this; }
 		else
