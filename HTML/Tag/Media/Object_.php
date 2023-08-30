@@ -18,10 +18,10 @@ class Object_ extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Object_; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapObject();
 	}
 	#endregion

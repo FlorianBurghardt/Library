@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Body;
 class Var_ extends Body
 {
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Var_; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 	}
 	#endregion
 }

@@ -14,10 +14,10 @@ class A extends AbstractLink
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::A; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapA();
 	}
 	#endregion

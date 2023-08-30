@@ -17,11 +17,11 @@ class Meter extends Progress
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Meter; }
 		$this->templateFile = 'double_after.html';
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapMeter();
 	}
 	#endregion

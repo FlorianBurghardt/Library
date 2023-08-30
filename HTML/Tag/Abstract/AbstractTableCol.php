@@ -12,9 +12,9 @@ abstract class AbstractTableCol extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapAbstractTableCol();
 	}
 	#endregion

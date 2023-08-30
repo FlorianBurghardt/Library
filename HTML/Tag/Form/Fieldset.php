@@ -16,10 +16,10 @@ class Fieldset extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Fieldset; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapFieldset();
 	}
 	#endregion
