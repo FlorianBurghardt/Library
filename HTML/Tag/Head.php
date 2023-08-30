@@ -8,10 +8,10 @@ use de\fburghardt\Library\HTML\Enum\TagList;
 class Head extends Body
 {
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Head; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 	}
 	#endregion
 }

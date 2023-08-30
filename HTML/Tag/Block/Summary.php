@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Body;
 class Summary extends Body
 {
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Summary; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 	}
 	#endregion
 }

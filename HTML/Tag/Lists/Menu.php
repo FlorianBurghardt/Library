@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Abstract\AbstractList;
 class Menu extends AbstractList
 {
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Menu; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 	}
 	#endregion
 }

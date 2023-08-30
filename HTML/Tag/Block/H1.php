@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Body;
 class H1 extends Body
 {
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::H1; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 	}
 	#endregion
 }

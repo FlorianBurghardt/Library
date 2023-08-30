@@ -34,10 +34,13 @@ class Body extends AbstractStructure
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Body; }
+
+		$tagID = $this->setTagId($input);
 		parent::__construct($input, $tagID);
+
 		$this->mapBody();
 		if (isset($this->input['data'])) { $this->mapData($this->input['data']); }
 		if (isset($this->input['aria'])) { $this->mapAria($this->input['aria']); }
@@ -50,6 +53,13 @@ class Body extends AbstractStructure
 	#endregion
 
 	#region getter / setter
+	public function setTagId(array|null $input): string|null
+	{
+		$tagID = null;
+		if (isset($input['id'])) { $tagID = (string)$input['id']; }
+		if (isset($input['tagID'])) { $tagID = (string)$input['tagID']; }
+		return $tagID;
+	}
 	public function getId(): string|null { return (isset($this->id)) ? $this->id : null; }
 	public function setId(string|null $id): void { $this->id = $id; }
 	public function getClass(): string|null { return (isset($this->class)) ? $this->class : null; }

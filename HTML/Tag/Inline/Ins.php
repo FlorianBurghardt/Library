@@ -13,10 +13,10 @@ class Ins extends Blockquote
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Ins; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapIns();
 	}
 	#endregion

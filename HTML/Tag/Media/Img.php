@@ -20,10 +20,10 @@ class Img extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $input = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Img; }
-		parent::__construct($input, $tagID);
+		parent::__construct($input);
 		$this->mapImg();
 	}
 	#endregion
