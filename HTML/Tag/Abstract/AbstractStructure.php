@@ -145,7 +145,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 	 * @throws NotAcceptableException Given content type is not valid
 	 */
 	public final function add(AbstractStructure|array|string $content, string $contentType = 'CONTENT', int|null $position = null): void
-	{
+	{		
 		$type = null;
 		if (is_string($contentType)) { $type = ContentType::tryFrom($contentType); }
 		if (is_null($type)) { $type = $contentType; }
@@ -288,16 +288,17 @@ abstract class AbstractStructure extends ForbiddenMethods
 		foreach($contentArray as $contentItem)
 		{
 			// Check contentItem type
-			if (isset($contentItem['tagName']))
+			if (isset($contentItem['tag']))
 			{
 				// Create class name
-				if (isset($contentItem['tagDirectory'])) { $class = $contentItem['tagDirectory'].'\\'.$contentItem['tagName']; }
-				else { $class = str_replace('\\Abstract', '', __NAMESPACE__).'\\'.$contentItem['tagName']; }
+				$tag = TagList::get($contentItem['tag']);
+				$contentItem['tag'] = str_replace('/', '\\', $tag->value);
+				$class = str_replace('\\Abstract', '', __NAMESPACE__).'\\'.$contentItem['tag'];
 
 				// Create instance of class
 				if (class_exists($class))
 				{
-					$object = new $class($contentItem['input'], $contentItem['tagID']);
+					$object = new $class($contentItem['input']);
 					$position = (isset($contentItem['position'])) ? (int)$contentItem['position'] : null;
 					$this->add($object, 'CONTENT', $position);
 
