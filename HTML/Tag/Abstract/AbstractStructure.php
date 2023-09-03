@@ -353,23 +353,20 @@ abstract class AbstractStructure extends ForbiddenMethods
 			$tepmlatePath = __ROOT__.'/'.$this->templateFolder.'/'.$defaultFile;
 		}
 
-		if (file_exists($tepmlatePath))
-		{
-			$templateContent = file_get_contents($tepmlatePath);
-
-			if (stripos($templateContent, '%TAG%')) { $templateContent = str_replace('%TAG%', strtolower($this->tagType->name), $templateContent); }
-
-			$divider = (stripos($templateContent, '%DIVIDER%')) ? stripos($templateContent, '%DIVIDER%') : strlen($templateContent);
-			
-			$this->openTag = substr($templateContent, 0, $divider);
-			$this->closeTag = ($divider) ? substr($templateContent, $divider + 9) : '';
-		}
-		else
+		if (!file_exists($tepmlatePath))
 		{
 			throw new NotFoundException(
 				'Template file not found: '.$tepmlatePath,
 				9102);
 		}
+		$templateContent = file_get_contents($tepmlatePath);
+
+		if (stripos($templateContent, '%TAG%')) { $templateContent = str_replace('%TAG%', strtolower($this->tagType->name), $templateContent); }
+
+		$divider = (stripos($templateContent, '%DIVIDER%')) ? stripos($templateContent, '%DIVIDER%') : strlen($templateContent);
+		
+		$this->openTag = substr($templateContent, 0, $divider);
+		$this->closeTag = ($divider) ? substr($templateContent, $divider + 9) : '';
 	}
 
 	/**
