@@ -1,15 +1,19 @@
 // Single Tag Item Example
 [
 	{
-        "tagDirectory": "Library\\HTML\\Tag", // (Optional) Namespace of Class Defalult: "Library\\HTML\\Tag" (Namespace of AbstractStruct Class [__NAMESPACE__])
-		"tagName": "Area\\Header", // Class Name with sub namespace 
-		"tagID": "PageHeader",
+        "tagName": "Header", // Class Name (Have to be an element of Enum TagList)
 		"position": 0, // (Optional) Position of Tag in List. Have to be greater of equal to 0
 		"input": // (Optional) Attribute list of tag shown in HTML open tag
 		{
-			"id": "PageHeader",
+			"tagID": "PageHeader", // Tag ID for referenzing in the php code
+			"id": "PageHeader", // Tag ID for referenzing in the html code
+				// "tagID" will not be shown in HTML output, "id" will
+				// If only "id" is defined, "tagID" will be set automatically to "id"
+				// If only "tagID" is defined, "id" won't be set
+				// Use both if different ID names are needed
             "class": "topbar",
-            // ... and so on, depending on tag type
+				// ... All possible html tag attributes, depending on tag type.
+				// A complete list can be found with static method TagInformation::listTagInfos(TagListType::JSON)
 
 			"events": // Events only in body and children tags
 			{
@@ -29,8 +33,7 @@
 // Multiple Tag Item Example
 [
 	{
-		"tagName": "Area\\Header",
-		"tagID": "PageHeader",
+		"tagName": "Header",
 		"input":
 		{
 			"id": "PageHeader",
@@ -38,34 +41,46 @@
 		}
 	},
 	{
-		"tagName": "Area\\Main",
-		"tagID": "PageMain",
+		"tagName": "Main",
 		"input":
 		{
+			"tagID": "PageMain",
 			"id": "MainArea",
             "class": "dark-bg"
 		}
 	},
 	{
-		"tagName": "Area\\Footer",
-		"tagID": "PageFooter"
+		"tagName": "Footer",
+		"input":
+		{
+			"tagID": "PageFooter"	
+		}
 	}
 ]
 // Nested Tag Item Example
 [
 	{
-		"tagName": "Area\\Main",
-		"tagID": "PageMain",
+		"tagName": "Main",
+		"input":
+		{
+			"tagID": "PageMain"	
+		},
 		"innerContent": // Nested Tag Items & Tag Content
 		[
 			{
-				"tagName": "Area\\Nav",
-				"tagID": "PageNavigation",
+				"tagName": "Nav",
+				"input":
+				{
+					"tagID": "PageNavigation"
+				},
 				"innerContent":
 				[
 					{
-						"tagName": "Block\\Div",
-						"tagID": "Div1"
+						"tagName": "Div",
+						"input":
+						{
+							"tagID": "Div1"	
+						}
 					}
 				]
 			}
@@ -107,13 +122,19 @@
 // Nested Tag Item & Tag Content Example
 [
 	{
-		"tagName": "Area\\Main",
-		"tagID": "PageMain",
+		"tagName": "Main",
+		"input":
+		{
+			"tagID": "PageMain"	
+		},
 		"innerContent":
 		[
 			{
-				"tagName": "Block\\H1",
-				"tagID": "H1",
+				"tagName": "H1",
+				"input":
+				{
+					"tagID": "H1"
+				},
 				"innerContent":
 				[
 					{
@@ -122,29 +143,41 @@
 				]
 			},
 			{
-				"tagName": "Area\\Nav",
-				"tagID": "PageNavigation",
+				"tagName": "Nav",
+				"input":
+				{
+					"tagID": "PageNavigation"
+				},
 				"innerContent":
 				[
 					{
-						"tagName": "Block\\Div",
-						"tagID": "Div1",
+						"tagName": "Div",
+						"input":
+						{
+							"tagID": "Div1"
+						},
 						"innerContent":
 						[
 							{
 								"content": "Ouput 1"
 							},
 							{
-								"tagName": "Block\\Div",
-								"tagID": "Div2",
+								"tagName": "Div",
+								"input":
+								{
+									"tagID": "Div2"
+								},
 								"innerContent":
 								[
 									{
 										"content": "Ouput 2"
 									},
 									{
-										"tagName": "Block\\Div",
-										"tagID": "Div3",
+										"tagName": "Div",
+										"input":
+										{
+											"tagID": "Div3"
+										},
 										"innerContent":
 										[
 											{
