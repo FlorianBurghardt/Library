@@ -14,10 +14,10 @@ class Th extends AbstractTableCell
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Th; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapTh();
 	}
 	#endregion
@@ -39,8 +39,8 @@ class Th extends AbstractTableCell
 	}
 	protected function mapTh(): void
 	{
-		if (isset($this->input['abbr'])) { $this->abbr = $this->input['abbr']; }
-		if (isset($this->input['scope'])) { $this->scope = $this->input['scope']; }
+		if (isset($this->attributes['abbr'])) { $this->abbr = $this->attributes['abbr']; }
+		if (isset($this->attributes['scope'])) { $this->scope = $this->attributes['scope']; }
 	}
 	#endregion
 }

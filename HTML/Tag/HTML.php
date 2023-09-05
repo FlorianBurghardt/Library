@@ -14,11 +14,11 @@ final class HTML extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::HTML; }
 		$this->templateFile = 'html.html';
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapHTML();
 	}
 	#endregion
@@ -42,9 +42,9 @@ final class HTML extends Body
 	}
 	protected function mapHTML(): void
 	{
-		if (isset($this->input['lang'])) { $this->lang = $this->input['lang']; }
-		if (isset($this->input['dir'])) { $this->dir = $this->input['dir']; }
-		if (isset($this->input['manifest'])) { $this->manifest = $this->input['manifest']; }
+		if (isset($this->attributes['lang'])) { $this->lang = $this->attributes['lang']; }
+		if (isset($this->attributes['dir'])) { $this->dir = $this->attributes['dir']; }
+		if (isset($this->attributes['manifest'])) { $this->manifest = $this->attributes['manifest']; }
 	}
 	#endregion
 }

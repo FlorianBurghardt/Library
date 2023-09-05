@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Body;
 class Span extends Body
 {
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Span; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 	}
 	#endregion
 }

@@ -14,9 +14,9 @@ abstract class AbstractTableCell extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapAbstractTableCell();
 	}
 	#endregion
@@ -41,9 +41,9 @@ abstract class AbstractTableCell extends Body
 	}
 	protected function mapAbstractTableCell(): void
 	{
-		if (isset($this->input['headers'])) { $this->headers = $this->input['headers']; }
-		if (isset($this->input['colspan'])) { $this->colspan = (int)$this->input['colspan']; }
-		if (isset($this->input['rowspan'])) { $this->rowspan = (int)$this->input['rowspan']; }
+		if (isset($this->attributes['headers'])) { $this->headers = $this->attributes['headers']; }
+		if (isset($this->attributes['colspan'])) { $this->colspan = (int)$this->attributes['colspan']; }
+		if (isset($this->attributes['rowspan'])) { $this->rowspan = (int)$this->attributes['rowspan']; }
 	}
 	#endregion
 }

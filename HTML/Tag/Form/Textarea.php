@@ -24,10 +24,10 @@ class Textarea extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Textarea; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapTextarea();
 	}
 	#endregion
@@ -79,18 +79,18 @@ class Textarea extends Body
 	}
 	protected function mapTextarea(): void
 	{
-		if (isset($this->input['dirname'])) { $this->dirname = $this->input['dirname']; }
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['placeholder'])) { $this->placeholder = $this->input['placeholder']; }
-		if (isset($this->input['wrap'])) { $this->wrap = $this->input['wrap']; }
-		if (isset($this->input['cols'])) { $this->cols = (int)$this->input['cols']; }
-		if (isset($this->input['maxlength'])) { $this->maxlength = (int)$this->input['maxlength']; }
-		if (isset($this->input['rows'])) { $this->rows = (int)$this->input['rows']; }
-		if (isset($this->input['autofocus'])) { $this->autofocus = (bool)$this->input['autofocus']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
-		if (isset($this->input['readonly'])) { $this->readonly = (bool)$this->input['readonly']; }
-		if (isset($this->input['required'])) { $this->required = (bool)$this->input['required']; }
+		if (isset($this->attributes['dirname'])) { $this->dirname = $this->attributes['dirname']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['placeholder'])) { $this->placeholder = $this->attributes['placeholder']; }
+		if (isset($this->attributes['wrap'])) { $this->wrap = $this->attributes['wrap']; }
+		if (isset($this->attributes['cols'])) { $this->cols = (int)$this->attributes['cols']; }
+		if (isset($this->attributes['maxlength'])) { $this->maxlength = (int)$this->attributes['maxlength']; }
+		if (isset($this->attributes['rows'])) { $this->rows = (int)$this->attributes['rows']; }
+		if (isset($this->attributes['autofocus'])) { $this->autofocus = (bool)$this->attributes['autofocus']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
+		if (isset($this->attributes['readonly'])) { $this->readonly = (bool)$this->attributes['readonly']; }
+		if (isset($this->attributes['required'])) { $this->required = (bool)$this->attributes['required']; }
 	}
 	#endregion
 }

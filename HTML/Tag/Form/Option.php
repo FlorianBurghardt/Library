@@ -16,10 +16,10 @@ class Option extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Option; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapOption();
 	}
 	#endregion
@@ -47,10 +47,10 @@ class Option extends Body
 	}
 	protected function mapOption(): void
 	{
-		if (isset($this->input['label'])) { $this->label = $this->input['label']; }
-		if (isset($this->input['value'])) { $this->value = $this->input['value']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
-		if (isset($this->input['selected'])) { $this->selected = (bool)$this->input['selected']; }
+		if (isset($this->attributes['label'])) { $this->label = $this->attributes['label']; }
+		if (isset($this->attributes['value'])) { $this->value = $this->attributes['value']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
+		if (isset($this->attributes['selected'])) { $this->selected = (bool)$this->attributes['selected']; }
 	}
 	#endregion
 }

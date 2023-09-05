@@ -12,9 +12,9 @@ abstract class AbstractTableCol extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapAbstractTableCol();
 	}
 	#endregion
@@ -33,7 +33,7 @@ abstract class AbstractTableCol extends Body
 	}
 	protected function mapAbstractTableCol(): void
 	{
-		if (isset($this->input['span'])) { $this->span = (int)$this->input['span']; }
+		if (isset($this->attributes['span'])) { $this->span = (int)$this->attributes['span']; }
 	}
 	#endregion
 }

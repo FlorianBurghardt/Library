@@ -20,10 +20,10 @@ class Img extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Img; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapImg();
 	}
 	#endregion
@@ -63,14 +63,14 @@ class Img extends AbstractMedia
 	}
 	protected function mapImg(): void
 	{
-		if (isset($this->input['srcset'])) { $this->srcset = $this->input['srcset']; }
-		if (isset($this->input['sizes'])) { $this->sizes = $this->input['sizes']; }
-		if (isset($this->input['alt'])) { $this->alt = $this->input['alt']; }
-		if (isset($this->input['loading'])) { $this->loading = $this->input['loading']; }
-		if (isset($this->input['crossorigin'])) { $this->crossorigin = $this->input['crossorigin']; }
-		if (isset($this->input['usemap'])) { $this->usemap = $this->input['usemap']; }
-		if (isset($this->input['longdesc'])) { $this->longdesc = $this->input['longdesc']; }
-		if (isset($this->input['ismap'])) { $this->ismap = (bool)$this->input['ismap']; }
+		if (isset($this->attributes['srcset'])) { $this->srcset = $this->attributes['srcset']; }
+		if (isset($this->attributes['sizes'])) { $this->sizes = $this->attributes['sizes']; }
+		if (isset($this->attributes['alt'])) { $this->alt = $this->attributes['alt']; }
+		if (isset($this->attributes['loading'])) { $this->loading = $this->attributes['loading']; }
+		if (isset($this->attributes['crossorigin'])) { $this->crossorigin = $this->attributes['crossorigin']; }
+		if (isset($this->attributes['usemap'])) { $this->usemap = $this->attributes['usemap']; }
+		if (isset($this->attributes['longdesc'])) { $this->longdesc = $this->attributes['longdesc']; }
+		if (isset($this->attributes['ismap'])) { $this->ismap = (bool)$this->attributes['ismap']; }
 	}
 	#endregion
 }

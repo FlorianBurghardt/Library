@@ -16,11 +16,11 @@ final class Meta extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Meta; }
 		$this->onlyOpenTag = true;
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapMeta();
 	}
 	#endregion
@@ -48,10 +48,10 @@ final class Meta extends Body
 	}
 	protected function mapMeta(): void
 	{
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['content'])) { $this->content = $this->input['content']; }
-		if (isset($this->input['charset'])) { $this->charset = $this->input['charset']; }
-		if (isset($this->input['httpEquiv'])) { $this->httpEquiv = $this->input['httpEquiv']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['content'])) { $this->content = $this->attributes['content']; }
+		if (isset($this->attributes['charset'])) { $this->charset = $this->attributes['charset']; }
+		if (isset($this->attributes['httpEquiv'])) { $this->httpEquiv = $this->attributes['httpEquiv']; }
 	}
 	#endregion
 }

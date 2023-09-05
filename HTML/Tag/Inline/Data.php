@@ -13,10 +13,10 @@ class Data extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Data; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapData();
 	}
 	#endregion
@@ -35,7 +35,7 @@ class Data extends Body
 	}
 	protected function mapData(): void
 	{
-		if (isset($this->input['value'])) { $this->value = $this->input['value']; }
+		if (isset($this->attributes['value'])) { $this->value = $this->attributes['value']; }
 	}
 	#endregion
 }

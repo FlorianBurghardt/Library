@@ -20,10 +20,10 @@ class Iframe extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Iframe; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapIframe();
 	}
 	#endregion
@@ -63,14 +63,14 @@ class Iframe extends AbstractMedia
 	}
 	protected function mapIframe(): void
 	{
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['srcdoc'])) { $this->srcdoc = $this->input['srcdoc']; }
-		if (isset($this->input['allow'])) { $this->allow = $this->input['allow']; }
-		if (isset($this->input['loading'])) { $this->loading = $this->input['loading']; }
-		if (isset($this->input['sandbox'])) { $this->sandbox = (bool)$this->input['sandbox']; }
-		if (isset($this->input['allowfullscreen'])) { $this->allowfullscreen = (bool)$this->input['allowfullscreen']; }
-		if (isset($this->input['allowpaymentrequest'])) { $this->allowpaymentrequest = (bool)$this->input['allowpaymentrequest']; }
-		if (isset($this->input['seamless'])) { $this->seamless = (bool)$this->input['seamless']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['srcdoc'])) { $this->srcdoc = $this->attributes['srcdoc']; }
+		if (isset($this->attributes['allow'])) { $this->allow = $this->attributes['allow']; }
+		if (isset($this->attributes['loading'])) { $this->loading = $this->attributes['loading']; }
+		if (isset($this->attributes['sandbox'])) { $this->sandbox = (bool)$this->attributes['sandbox']; }
+		if (isset($this->attributes['allowfullscreen'])) { $this->allowfullscreen = (bool)$this->attributes['allowfullscreen']; }
+		if (isset($this->attributes['allowpaymentrequest'])) { $this->allowpaymentrequest = (bool)$this->attributes['allowpaymentrequest']; }
+		if (isset($this->attributes['seamless'])) { $this->seamless = (bool)$this->attributes['seamless']; }
 	}
 	#endregion
 }

@@ -13,10 +13,10 @@ class Embed extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Embed; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapEmbed();
 	}
 	#endregion
@@ -35,7 +35,7 @@ class Embed extends AbstractMedia
 	}
 	protected function mapEmbed(): void
 	{
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
 	}
 	#endregion
 }

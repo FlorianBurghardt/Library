@@ -19,10 +19,10 @@ class Select extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Select; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapSelect();
 	}
 	#endregion
@@ -59,13 +59,13 @@ class Select extends Body
 	}
 	protected function mapSelect(): void
 	{
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['size'])) { $this->size = (int)$this->input['size']; }
-		if (isset($this->input['autofocus'])) { $this->autofocus = (bool)$this->input['autofocus']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
-		if (isset($this->input['multiple'])) { $this->multiple = (bool)$this->input['multiple']; }
-		if (isset($this->input['required'])) { $this->required = (bool)$this->input['required']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['size'])) { $this->size = (int)$this->attributes['size']; }
+		if (isset($this->attributes['autofocus'])) { $this->autofocus = (bool)$this->attributes['autofocus']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
+		if (isset($this->attributes['multiple'])) { $this->multiple = (bool)$this->attributes['multiple']; }
+		if (isset($this->attributes['required'])) { $this->required = (bool)$this->attributes['required']; }
 	}
 	#endregion
 }

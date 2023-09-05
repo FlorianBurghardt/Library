@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Block\Blockquote;
 class Q extends Blockquote
 {
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Q; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 	}
 	#endregion
 }

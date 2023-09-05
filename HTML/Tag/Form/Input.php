@@ -43,10 +43,10 @@ class Input extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Input; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapInput();
 	}
 	#endregion
@@ -155,37 +155,37 @@ class Input extends Body
 	}
 	protected function mapInput(): void
 	{
-		if (isset($this->input['accept'])) { $this->accept = $this->input['accept']; }
-		if (isset($this->input['alt'])) { $this->alt = $this->input['alt']; }
-		if (isset($this->input['autocomplete'])) { $this->autocomplete = $this->input['autocomplete']; }
-		if (isset($this->input['dirname'])) { $this->dirname = $this->input['dirname']; }
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['formaction'])) { $this->formaction = $this->input['formaction']; }
-		if (isset($this->input['formenctype'])) { $this->formenctype = $this->input['formenctype']; }
-		if (isset($this->input['formmethod'])) { $this->formmethod = $this->input['formmethod']; }
-		if (isset($this->input['formtarget'])) { $this->formtarget = $this->input['formtarget']; }
-		if (isset($this->input['list'])) { $this->list = $this->input['list']; }
-		if (isset($this->input['max'])) { $this->max = $this->input['max']; }
-		if (isset($this->input['min'])) { $this->min = $this->input['min']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['pattern'])) { $this->pattern = $this->input['pattern']; }
-		if (isset($this->input['placeholder'])) { $this->placeholder = $this->input['placeholder']; }
-		if (isset($this->input['src'])) { $this->src = $this->input['src']; }
-		if (isset($this->input['step'])) { $this->step = $this->input['step']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
-		if (isset($this->input['value'])) { $this->value = $this->input['value']; }
-		if (isset($this->input['height'])) { $this->height = (int)$this->input['height']; }
-		if (isset($this->input['maxlength'])) { $this->maxlength = (int)$this->input['maxlength']; }
-		if (isset($this->input['minlength'])) { $this->minlength = (int)$this->input['minlength']; }
-		if (isset($this->input['size'])) { $this->size = (int)$this->input['size']; }
-		if (isset($this->input['width'])) { $this->width = (int)$this->input['width']; }
-		if (isset($this->input['autofocus'])) { $this->autofocus = (bool)$this->input['autofocus']; }
-		if (isset($this->input['checked'])) { $this->checked = (bool)$this->input['checked']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
-		if (isset($this->input['formnovalidate'])) { $this->formnovalidate = (bool)$this->input['formnovalidate']; }
-		if (isset($this->input['multiple'])) { $this->multiple = (bool)$this->input['multiple']; }
-		if (isset($this->input['readonly'])) { $this->readonly = (bool)$this->input['readonly']; }
-		if (isset($this->input['required'])) { $this->required = (bool)$this->input['required']; }
+		if (isset($this->attributes['accept'])) { $this->accept = $this->attributes['accept']; }
+		if (isset($this->attributes['alt'])) { $this->alt = $this->attributes['alt']; }
+		if (isset($this->attributes['autocomplete'])) { $this->autocomplete = $this->attributes['autocomplete']; }
+		if (isset($this->attributes['dirname'])) { $this->dirname = $this->attributes['dirname']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['formaction'])) { $this->formaction = $this->attributes['formaction']; }
+		if (isset($this->attributes['formenctype'])) { $this->formenctype = $this->attributes['formenctype']; }
+		if (isset($this->attributes['formmethod'])) { $this->formmethod = $this->attributes['formmethod']; }
+		if (isset($this->attributes['formtarget'])) { $this->formtarget = $this->attributes['formtarget']; }
+		if (isset($this->attributes['list'])) { $this->list = $this->attributes['list']; }
+		if (isset($this->attributes['max'])) { $this->max = $this->attributes['max']; }
+		if (isset($this->attributes['min'])) { $this->min = $this->attributes['min']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['pattern'])) { $this->pattern = $this->attributes['pattern']; }
+		if (isset($this->attributes['placeholder'])) { $this->placeholder = $this->attributes['placeholder']; }
+		if (isset($this->attributes['src'])) { $this->src = $this->attributes['src']; }
+		if (isset($this->attributes['step'])) { $this->step = $this->attributes['step']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
+		if (isset($this->attributes['value'])) { $this->value = $this->attributes['value']; }
+		if (isset($this->attributes['height'])) { $this->height = (int)$this->attributes['height']; }
+		if (isset($this->attributes['maxlength'])) { $this->maxlength = (int)$this->attributes['maxlength']; }
+		if (isset($this->attributes['minlength'])) { $this->minlength = (int)$this->attributes['minlength']; }
+		if (isset($this->attributes['size'])) { $this->size = (int)$this->attributes['size']; }
+		if (isset($this->attributes['width'])) { $this->width = (int)$this->attributes['width']; }
+		if (isset($this->attributes['autofocus'])) { $this->autofocus = (bool)$this->attributes['autofocus']; }
+		if (isset($this->attributes['checked'])) { $this->checked = (bool)$this->attributes['checked']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
+		if (isset($this->attributes['formnovalidate'])) { $this->formnovalidate = (bool)$this->attributes['formnovalidate']; }
+		if (isset($this->attributes['multiple'])) { $this->multiple = (bool)$this->attributes['multiple']; }
+		if (isset($this->attributes['readonly'])) { $this->readonly = (bool)$this->attributes['readonly']; }
+		if (isset($this->attributes['required'])) { $this->required = (bool)$this->attributes['required']; }
 	}
 	#endregion
 }

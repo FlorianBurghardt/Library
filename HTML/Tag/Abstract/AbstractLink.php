@@ -15,9 +15,9 @@ abstract class AbstractLink extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapAbstractLink();
 	}
 	#endregion
@@ -51,12 +51,12 @@ abstract class AbstractLink extends AbstractMedia
 	}
 	protected function mapAbstractLink(): void
 	{
-		if (isset($this->input['href'])) { $this->href = $this->input['href']; }
-		if (isset($this->input['hreflang'])) { $this->hreflang = $this->input['hreflang']; }
-		if (isset($this->input['media'])) { $this->media = $this->input['media']; }
-		if (isset($this->input['rel'])) { $this->rel = $this->input['rel']; }
-		if (isset($this->input['target'])) { $this->target = $this->input['target']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
+		if (isset($this->attributes['href'])) { $this->href = $this->attributes['href']; }
+		if (isset($this->attributes['hreflang'])) { $this->hreflang = $this->attributes['hreflang']; }
+		if (isset($this->attributes['media'])) { $this->media = $this->attributes['media']; }
+		if (isset($this->attributes['rel'])) { $this->rel = $this->attributes['rel']; }
+		if (isset($this->attributes['target'])) { $this->target = $this->attributes['target']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
 	}
 	#endregion
 }

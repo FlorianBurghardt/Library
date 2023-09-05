@@ -13,10 +13,10 @@ class Del extends Blockquote
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Del; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapDel();
 	}
 	#endregion
@@ -35,7 +35,7 @@ class Del extends Blockquote
 	}
 	protected function mapDel(): void
 	{
-		if (isset($this->input['datetime'])) { $this->datetime = $this->input['datetime']; }
+		if (isset($this->attributes['datetime'])) { $this->datetime = $this->attributes['datetime']; }
 	}
 	#endregion
 }

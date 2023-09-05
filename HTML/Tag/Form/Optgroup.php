@@ -14,10 +14,10 @@ class Optgroup extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Optgroup; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapOptgroup();
 	}
 	#endregion
@@ -39,8 +39,8 @@ class Optgroup extends Body
 	}
 	protected function mapOptgroup(): void
 	{
-		if (isset($this->input['label'])) { $this->label = $this->input['label']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
+		if (isset($this->attributes['label'])) { $this->label = $this->attributes['label']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
 	}
 	#endregion
 }

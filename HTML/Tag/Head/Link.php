@@ -20,11 +20,11 @@ final class Link extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Link; }
 		$this->onlyOpenTag = true;
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapLink();
 	}
 	#endregion
@@ -64,14 +64,14 @@ final class Link extends Body
 	}
 	protected function mapLink(): void
 	{
-		if (isset($this->input['rel'])) { $this->rel = $this->input['rel']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
-		if (isset($this->input['href'])) { $this->href = $this->input['href']; }
-		if (isset($this->input['sizes'])) { $this->sizes = $this->input['sizes']; }
-		if (isset($this->input['hreflang'])) { $this->hreflang = $this->input['hreflang']; }
-		if (isset($this->input['referrerpolicy'])) { $this->referrerpolicy = $this->input['referrerpolicy']; }
-		if (isset($this->input['integrity'])) { $this->integrity = $this->input['integrity']; }
-		if (isset($this->input['crossorigin'])) { $this->crossorigin = $this->input['crossorigin']; }
+		if (isset($this->attributes['rel'])) { $this->rel = $this->attributes['rel']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
+		if (isset($this->attributes['href'])) { $this->href = $this->attributes['href']; }
+		if (isset($this->attributes['sizes'])) { $this->sizes = $this->attributes['sizes']; }
+		if (isset($this->attributes['hreflang'])) { $this->hreflang = $this->attributes['hreflang']; }
+		if (isset($this->attributes['referrerpolicy'])) { $this->referrerpolicy = $this->attributes['referrerpolicy']; }
+		if (isset($this->attributes['integrity'])) { $this->integrity = $this->attributes['integrity']; }
+		if (isset($this->attributes['crossorigin'])) { $this->crossorigin = $this->attributes['crossorigin']; }
 	}
 	#endregion
 }

@@ -21,10 +21,10 @@ class Form extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Form; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapForm();
 	}
 	#endregion
@@ -67,15 +67,15 @@ class Form extends Body
 	}
 	protected function mapForm(): void
 	{
-		if (isset($this->input['acceptCharset'])) { $this->acceptCharset = $this->input['acceptCharset']; }
-		if (isset($this->input['action'])) { $this->action = $this->input['action']; }
-		if (isset($this->input['autocomplete'])) { $this->autocomplete = $this->input['autocomplete']; }
-		if (isset($this->input['enctype'])) { $this->enctype = $this->input['enctype']; }
-		if (isset($this->input['method'])) { $this->method = $this->input['method']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['rel'])) { $this->rel = $this->input['rel']; }
-		if (isset($this->input['target'])) { $this->target = $this->input['target']; }
-		if (isset($this->input['novalidate'])) { $this->novalidate = (bool)$this->input['novalidate']; }
+		if (isset($this->attributes['acceptCharset'])) { $this->acceptCharset = $this->attributes['acceptCharset']; }
+		if (isset($this->attributes['action'])) { $this->action = $this->attributes['action']; }
+		if (isset($this->attributes['autocomplete'])) { $this->autocomplete = $this->attributes['autocomplete']; }
+		if (isset($this->attributes['enctype'])) { $this->enctype = $this->attributes['enctype']; }
+		if (isset($this->attributes['method'])) { $this->method = $this->attributes['method']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['rel'])) { $this->rel = $this->attributes['rel']; }
+		if (isset($this->attributes['target'])) { $this->target = $this->attributes['target']; }
+		if (isset($this->attributes['novalidate'])) { $this->novalidate = (bool)$this->attributes['novalidate']; }
 	}
 	#endregion
 }

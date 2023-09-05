@@ -28,7 +28,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 	protected string $templateFile;
 	protected TagList $tagType;
 	protected bool $onlyOpenTag = false;
-	protected array|null $input = null;
+	protected array|null $attributes = null;
 
 	protected static array $allTags = [];
 	protected static int $tagCount = 0;
@@ -41,7 +41,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 	#region constructor
 	/**
 	 * Abstract constructor for several HTML Tag generation Classes
-	 * @param array|null $input Named input array for tag attributes
+	 * @param array|null $attributes Named attributes array for tag attributes
 	 * @param string|null $tagID Tag ID has to be unique when used otherwise a unique ID will be generated
 	 * @property TagList $this->tagType
 	 * - Have to be set in child constructor before calling parent constructor.
@@ -52,17 +52,17 @@ abstract class AbstractStructure extends ForbiddenMethods
 	 * - Generate only open tag (self-closing tag).
 	 * - Example: $onlyOpenTag = true => \<meta\/\>
 	 * @example costructor Complete child constructor example:
-	 * - public function __construct(array|null $input = null, string|null $tagID = null)
+	 * - public function __construct(array|null $attributes = null, string|null $tagID = null)
 	 * - {
-	 * - $this->input = $input;
+	 * - $this->attributes = $attributes;
 	 * - $this->map();
 	 * - if (!isset($this->tagType)) { $this->tagType = TagList::Meta; }
 	 * - $this->onlyOpenTag = true;
-	 * - parent::__construct($this->input, $tagID);
+	 * - parent::__construct($this->attributes, $tagID);
 	 * - }
 	 * @throws NotAcceptableException TagType is not set
 	 */
-    public function __construct(array|null $input = null, string|null $tagID = null)
+    public function __construct(array|null $attributes = null, string|null $tagID = null)
 	{
 		$this->setRootPath();
 
@@ -75,12 +75,12 @@ abstract class AbstractStructure extends ForbiddenMethods
 		}
 		$this->addTagID($tagID);
 
-		$this->input = $input;
+		$this->attributes = $attributes;
 
 		if (!isset($this->templateFolder)) { $this->templateFolder = 'de/fburghardt/Library/HTML/Template'; }
 		$this->loadTemplate();
 	
-		if (isset($input['innerContent'])) { $this->createContent($input['innerContent']); }
+		if (isset($attributes['innerContent'])) { $this->createContent($attributes['innerContent']); }
 	}
 	#endregion
 
@@ -216,7 +216,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 	{
 		$reflector = new \ReflectionClass(get_called_class());
 		$properties = $reflector->getProperties(\ReflectionProperty:: IS_PRIVATE | \ReflectionProperty::IS_PROTECTED | \ReflectionProperty::IS_PUBLIC);
-		$skip = ['', 'templateFolder', 'templateFile', 'onlyOpenTag', 'input', 'tagType', 'allTags', 'tagCount', 'tags', 'openTag', 'closeTag'];
+		$skip = ['', 'templateFolder', 'templateFile', 'onlyOpenTag', 'attributes', 'tagType', 'allTags', 'tagCount', 'tags', 'openTag', 'closeTag'];
 		$result = [];
 		if ($inheritsFrom) { $result["InheritsFrom"] = $this->getParentClassName($inheritsClassNameincludingNamespace); }
 		foreach ($properties as $property)
@@ -298,7 +298,7 @@ abstract class AbstractStructure extends ForbiddenMethods
 				// Create instance of class
 				if (class_exists($class))
 				{
-					$object = new $class($contentItem['input']);
+					$object = new $class($contentItem['attributes']);
 					$position = (isset($contentItem['position'])) ? (int)$contentItem['position'] : null;
 					$this->add($object, 'CONTENT', $position);
 

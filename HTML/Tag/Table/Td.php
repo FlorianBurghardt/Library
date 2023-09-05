@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Abstract\AbstractTableCell;
 class Td extends AbstractTableCell
 {
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Td; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 	}
 	#endregion
 }

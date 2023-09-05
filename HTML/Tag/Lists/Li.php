@@ -12,10 +12,10 @@ class Li extends Body
 	protected string|null $value	/** @property Specifies-the-start-value-of-the-list-item.-Following-list-items-will-increment-from-that-value */;
 	#endregion
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Li; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapLi();
 	}
 	#endregion
@@ -34,7 +34,7 @@ class Li extends Body
 	}
 	protected function mapLi(): void
 	{
-		if (isset($this->input['value'])) { $this->value = $this->input['value']; }
+		if (isset($this->attributes['value'])) { $this->value = $this->attributes['value']; }
 	}
 	#endregion
 }

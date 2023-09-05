@@ -12,9 +12,9 @@ abstract class AbstractList extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapAbstractList();
 	}
 	#endregion
@@ -33,7 +33,7 @@ abstract class AbstractList extends Body
 	}
 	protected function mapAbstractList(): void
 	{
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
 	}
 	#endregion
 }

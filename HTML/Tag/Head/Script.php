@@ -21,10 +21,10 @@ final class Script extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Script; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapScript();
 	}
 	#endregion
@@ -67,15 +67,15 @@ final class Script extends Body
 	}
 	protected function mapScript(): void
 	{
-		if (isset($this->input['src'])) { $this->src = $this->input['src']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
-		if (isset($this->input['charset'])) { $this->charset = $this->input['charset']; }
-		if (isset($this->input['crossorigin'])) { $this->crossorigin = $this->input['crossorigin']; }
-		if (isset($this->input['integrity'])) { $this->integrity = $this->input['integrity']; }
-		if (isset($this->input['referrerpolicy'])) { $this->referrerpolicy = $this->input['referrerpolicy']; }
-		if (isset($this->input['async'])) { $this->async = (bool)$this->input['async']; }
-		if (isset($this->input['defer'])) { $this->defer = (bool)$this->input['defer']; }
-		if (isset($this->input['nomodule'])) { $this->nomodule = (bool)$this->input['nomodule']; }
+		if (isset($this->attributes['src'])) { $this->src = $this->attributes['src']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
+		if (isset($this->attributes['charset'])) { $this->charset = $this->attributes['charset']; }
+		if (isset($this->attributes['crossorigin'])) { $this->crossorigin = $this->attributes['crossorigin']; }
+		if (isset($this->attributes['integrity'])) { $this->integrity = $this->attributes['integrity']; }
+		if (isset($this->attributes['referrerpolicy'])) { $this->referrerpolicy = $this->attributes['referrerpolicy']; }
+		if (isset($this->attributes['async'])) { $this->async = (bool)$this->attributes['async']; }
+		if (isset($this->attributes['defer'])) { $this->defer = (bool)$this->attributes['defer']; }
+		if (isset($this->attributes['nomodule'])) { $this->nomodule = (bool)$this->attributes['nomodule']; }
 	}
 	#endregion
 }

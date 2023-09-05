@@ -15,10 +15,10 @@ class Output extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Output; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapOutput();
 	}
 	#endregion
@@ -43,9 +43,9 @@ class Output extends Body
 	}
 	protected function mapOutput(): void
 	{
-		if (isset($this->input['for'])) { $this->for = $this->input['for']; }
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
+		if (isset($this->attributes['for'])) { $this->for = $this->attributes['for']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
 	}
 	#endregion
 }

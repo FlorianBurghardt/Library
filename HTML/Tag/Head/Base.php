@@ -14,11 +14,11 @@ final class Base extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Base; }
 		$this->onlyOpenTag = true;
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapBase();
 	}
 	#endregion
@@ -40,8 +40,8 @@ final class Base extends Body
 	}
 	protected function mapBase(): void
 	{
-		if (isset($this->input['href'])) { $this->href = $this->input['href']; }
-		if (isset($this->input['target'])) { $this->target = $this->input['target']; }
+		if (isset($this->attributes['href'])) { $this->href = $this->attributes['href']; }
+		if (isset($this->attributes['target'])) { $this->target = $this->attributes['target']; }
 	}
 	#endregion
 }
