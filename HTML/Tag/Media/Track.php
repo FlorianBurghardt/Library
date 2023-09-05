@@ -17,10 +17,10 @@ class Track extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Track; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapTrack();
 	}
 	#endregion
@@ -51,11 +51,11 @@ class Track extends Body
 	}
 	protected function mapTrack(): void
 	{
-		if (isset($this->input['default'])) { $this->default = $this->input['default']; }
-		if (isset($this->input['kind'])) { $this->kind = $this->input['kind']; }
-		if (isset($this->input['label'])) { $this->label = $this->input['label']; }
-		if (isset($this->input['src'])) { $this->src = $this->input['src']; }
-		if (isset($this->input['srclang'])) { $this->srclang = $this->input['srclang']; }
+		if (isset($this->attributes['default'])) { $this->default = $this->attributes['default']; }
+		if (isset($this->attributes['kind'])) { $this->kind = $this->attributes['kind']; }
+		if (isset($this->attributes['label'])) { $this->label = $this->attributes['label']; }
+		if (isset($this->attributes['src'])) { $this->src = $this->attributes['src']; }
+		if (isset($this->attributes['srclang'])) { $this->srclang = $this->attributes['srclang']; }
 	}
 	#endregion
 }

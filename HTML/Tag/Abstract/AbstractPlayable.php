@@ -17,9 +17,9 @@ abstract class AbstractPlayable extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapAbstractPlayable();
 	}
 	#endregion
@@ -53,12 +53,12 @@ abstract class AbstractPlayable extends Body
 	}
 	protected function mapAbstractPlayable(): void
 	{
-		if (isset($this->input['preload'])) { $this->preload = $this->input['preload']; }
-		if (isset($this->input['src'])) { $this->src = $this->input['src']; }
-		if (isset($this->input['autoplay'])) { $this->autoplay = (bool)$this->input['autoplay']; }
-		if (isset($this->input['controls'])) { $this->controls = (bool)$this->input['controls']; }
-		if (isset($this->input['loop'])) { $this->loop = (bool)$this->input['loop']; }
-		if (isset($this->input['muted'])) { $this->muted = (bool)$this->input['muted']; }
+		if (isset($this->attributes['preload'])) { $this->preload = $this->attributes['preload']; }
+		if (isset($this->attributes['src'])) { $this->src = $this->attributes['src']; }
+		if (isset($this->attributes['autoplay'])) { $this->autoplay = (bool)$this->attributes['autoplay']; }
+		if (isset($this->attributes['controls'])) { $this->controls = (bool)$this->attributes['controls']; }
+		if (isset($this->attributes['loop'])) { $this->loop = (bool)$this->attributes['loop']; }
+		if (isset($this->attributes['muted'])) { $this->muted = (bool)$this->attributes['muted']; }
 	}
 	#endregion
 }

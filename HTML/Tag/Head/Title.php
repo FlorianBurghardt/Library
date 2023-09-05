@@ -13,10 +13,10 @@ final class Title extends Head
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Title; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapTitle();
 	}
 	#endregion
@@ -35,7 +35,7 @@ final class Title extends Head
 	}
 	protected function mapTitle(): void
 	{
-		if (isset($this->input['title'])) { $this->title = $this->input['title']; }
+		if (isset($this->attributes['title'])) { $this->title = $this->attributes['title']; }
 	}
 	#endregion
 }

@@ -14,10 +14,10 @@ class Label extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Label; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapLabel();
 	}
 	#endregion
@@ -39,8 +39,8 @@ class Label extends Body
 	}
 	protected function mapLabel(): void
 	{
-		if (isset($this->input['for'])) { $this->for = $this->input['for']; }
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
+		if (isset($this->attributes['for'])) { $this->for = $this->attributes['for']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
 	}
 	#endregion
 }

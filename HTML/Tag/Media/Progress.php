@@ -14,11 +14,11 @@ class Progress extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Progress; }
 		$this->templateFile = 'double_after.html';
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapProgress();
 	}
 	#endregion
@@ -40,8 +40,8 @@ class Progress extends Body
 	}
 	protected function mapProgress(): void
 	{
-		if (isset($this->input['max'])) { $this->max = (float)$this->input['max']; }
-		if (isset($this->input['value'])) { $this->value = (float)$this->input['value']; }
+		if (isset($this->attributes['max'])) { $this->max = (float)$this->attributes['max']; }
+		if (isset($this->attributes['value'])) { $this->value = (float)$this->attributes['value']; }
 	}
 	#endregion
 }

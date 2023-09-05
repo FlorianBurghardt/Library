@@ -18,10 +18,10 @@ class Object_ extends AbstractMedia
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Object_; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapObject();
 	}
 	#endregion
@@ -56,12 +56,12 @@ class Object_ extends AbstractMedia
 	}
 	protected function mapObject(): void
 	{
-		if (isset($this->input['objectData'])) { $this->objectData = $this->input['objectData']; }
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['usemap'])) { $this->usemap = $this->input['usemap']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
-		if (isset($this->input['typemustmatch'])) { $this->typemustmatch = (bool)$this->input['typemustmatch']; }
+		if (isset($this->attributes['objectData'])) { $this->objectData = $this->attributes['objectData']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['usemap'])) { $this->usemap = $this->attributes['usemap']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
+		if (isset($this->attributes['typemustmatch'])) { $this->typemustmatch = (bool)$this->attributes['typemustmatch']; }
 	}
 	#endregion
 }

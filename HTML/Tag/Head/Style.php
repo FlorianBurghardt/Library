@@ -14,10 +14,10 @@ final class Style extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Style; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapStyle();
 	}
 	#endregion
@@ -39,8 +39,8 @@ final class Style extends Body
 	}
 	protected function mapStyle(): void
 	{
-		if (isset($this->input['media'])) { $this->media = $this->input['media']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
+		if (isset($this->attributes['media'])) { $this->media = $this->attributes['media']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
 	}
 	#endregion
 }

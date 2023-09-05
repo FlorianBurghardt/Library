@@ -14,10 +14,10 @@ class Ol extends AbstractList
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Ol; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapOl();
 	}
 	#endregion
@@ -39,8 +39,8 @@ class Ol extends AbstractList
 	}
 	protected function mapOl(): void
 	{
-		if (isset($this->input['start'])) { $this->start = $this->input['start']; }
-		if (isset($this->input['reversed'])) { $this->reversed = (bool)$this->input['reversed']; }
+		if (isset($this->attributes['start'])) { $this->start = $this->attributes['start']; }
+		if (isset($this->attributes['reversed'])) { $this->reversed = (bool)$this->attributes['reversed']; }
 	}
 	#endregion
 }

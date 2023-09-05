@@ -13,10 +13,10 @@ class Blockquote extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Blockquote; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapBlockquote();
 	}
 	#endregion
@@ -35,7 +35,7 @@ class Blockquote extends Body
 	}
 	protected function mapBlockquote(): void
 	{
-		if (isset($this->input['cite'])) { $this->cite = $this->input['cite']; }
+		if (isset($this->attributes['cite'])) { $this->cite = $this->attributes['cite']; }
 	}
 	#endregion
 }

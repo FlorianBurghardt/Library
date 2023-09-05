@@ -16,10 +16,10 @@ class Fieldset extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Fieldset; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapFieldset();
 	}
 	#endregion
@@ -44,9 +44,9 @@ class Fieldset extends Body
 	}
 	protected function mapFieldset(): void
 	{
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
 	}
 	#endregion
 }

@@ -13,10 +13,10 @@ class Ins extends Blockquote
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Ins; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapIns();
 	}
 	#endregion
@@ -35,7 +35,7 @@ class Ins extends Blockquote
 	}
 	protected function mapIns(): void
 	{
-		if (isset($this->input['datetime'])) { $this->datetime = $this->input['datetime']; }
+		if (isset($this->attributes['datetime'])) { $this->datetime = $this->attributes['datetime']; }
 	}
 	#endregion
 }

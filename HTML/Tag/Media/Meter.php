@@ -17,11 +17,11 @@ class Meter extends Progress
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Meter; }
 		$this->templateFile = 'double_after.html';
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapMeter();
 	}
 	#endregion
@@ -52,11 +52,11 @@ class Meter extends Progress
 	}
 	protected function mapMeter(): void
 	{
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['min'])) { $this->min = (float)$this->input['min']; }
-		if (isset($this->input['low'])) { $this->low = (float)$this->input['low']; }
-		if (isset($this->input['high'])) { $this->high = (float)$this->input['high']; }
-		if (isset($this->input['optimum'])) { $this->optimum = (float)$this->input['optimum']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['min'])) { $this->min = (float)$this->attributes['min']; }
+		if (isset($this->attributes['low'])) { $this->low = (float)$this->attributes['low']; }
+		if (isset($this->attributes['high'])) { $this->high = (float)$this->attributes['high']; }
+		if (isset($this->attributes['optimum'])) { $this->optimum = (float)$this->attributes['optimum']; }
 	}
 	#endregion
 }

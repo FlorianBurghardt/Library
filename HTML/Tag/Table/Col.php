@@ -9,10 +9,10 @@ use de\fburghardt\Library\HTML\Tag\Abstract\AbstractTableCol;
 class Col extends AbstractTableCol
 {
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Col; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 	}
 	#endregion
 }

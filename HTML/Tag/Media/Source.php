@@ -17,10 +17,10 @@ class Source extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Source; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapSource();
 	}
 	#endregion
@@ -51,11 +51,11 @@ class Source extends Body
 	}
 	protected function mapSource(): void
 	{
-		if (isset($this->input['media'])) { $this->media = $this->input['media']; }
-		if (isset($this->input['src'])) { $this->src = $this->input['src']; }
-		if (isset($this->input['srcset'])) { $this->srcset = $this->input['srcset']; }
-		if (isset($this->input['sizes'])) { $this->sizes = $this->input['sizes']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
+		if (isset($this->attributes['media'])) { $this->media = $this->attributes['media']; }
+		if (isset($this->attributes['src'])) { $this->src = $this->attributes['src']; }
+		if (isset($this->attributes['srcset'])) { $this->srcset = $this->attributes['srcset']; }
+		if (isset($this->attributes['sizes'])) { $this->sizes = $this->attributes['sizes']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
 	}
 	#endregion
 }

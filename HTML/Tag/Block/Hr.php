@@ -9,11 +9,11 @@ use de\fburghardt\Library\HTML\Tag\Body;
 class Hr extends Body
 {
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Hr; }
 		$this->onlyOpenTag = true;
-		parent::__construct($input);
+		parent::__construct($attributes);
 	}
 	#endregion
 }

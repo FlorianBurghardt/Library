@@ -15,10 +15,10 @@ class Video extends AbstractPlayable
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Video; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapVideo();
 	}
 	#endregion
@@ -43,9 +43,9 @@ class Video extends AbstractPlayable
 	}
 	protected function mapVideo(): void
 	{
-		if (isset($this->input['poster'])) { $this->poster = $this->input['poster']; }
-		if (isset($this->input['width'])) { $this->width = (int)$this->input['width']; }
-		if (isset($this->input['height'])) { $this->height = (int)$this->input['height']; }
+		if (isset($this->attributes['poster'])) { $this->poster = $this->attributes['poster']; }
+		if (isset($this->attributes['width'])) { $this->width = (int)$this->attributes['width']; }
+		if (isset($this->attributes['height'])) { $this->height = (int)$this->attributes['height']; }
 	}
 	#endregion
 }

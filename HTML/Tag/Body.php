@@ -34,30 +34,30 @@ class Body extends AbstractStructure
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Body; }
 
-		$tagID = $this->setTagId($input);
-		parent::__construct($input, $tagID);
+		$tagID = $this->setTagId($attributes);
+		parent::__construct($attributes, $tagID);
 
 		$this->mapBody();
-		if (isset($this->input['data'])) { $this->mapData($this->input['data']); }
-		if (isset($this->input['aria'])) { $this->mapAria($this->input['aria']); }
-		if (isset($this->input['events']))
+		if (isset($this->attributes['data'])) { $this->mapData($this->attributes['data']); }
+		if (isset($this->attributes['aria'])) { $this->mapAria($this->attributes['aria']); }
+		if (isset($this->attributes['events']))
 		{
-			if ($this->isBodyClass()) { $this->mapBodyEvents($this->input['events']); }
-			$this->mapEvents($this->input['events']);
+			if ($this->isBodyClass()) { $this->mapBodyEvents($this->attributes['events']); }
+			$this->mapEvents($this->attributes['events']);
 		}
 	}
 	#endregion
 
 	#region getter / setter
-	public function setTagId(array|null $input): string|null
+	public function setTagId(array|null $attributes): string|null
 	{
 		$tagID = null;
-		if (isset($input['id'])) { $tagID = (string)$input['id']; }
-		if (isset($input['tagID'])) { $tagID = (string)$input['tagID']; }
+		if (isset($attributes['id'])) { $tagID = (string)$attributes['id']; }
+		if (isset($attributes['tagID'])) { $tagID = (string)$attributes['tagID']; }
 		return $tagID;
 	}
 	public function getId(): string|null { return (isset($this->id)) ? $this->id : null; }
@@ -131,19 +131,19 @@ class Body extends AbstractStructure
 
 	protected function mapBody(): void
 	{
-		if (isset($this->input['id'])) { $this->id = $this->input['id']; }
-		if (isset($this->input['class'])) { $this->class = $this->input['class']; }
-		if (isset($this->input['title'])) { $this->title = $this->input['title']; }
-		if (isset($this->input['style'])) { $this->style = $this->input['style']; }
-		if (isset($this->input['accesskey'])) { $this->accesskey = $this->input['accesskey']; }
-		if (isset($this->input['dropzone'])) { $this->dropzone = $this->input['dropzone']; }
-		if (isset($this->input['dir'])) { $this->dir = $this->input['dir']; }
-		if (isset($this->input['role'])) { $this->role = $this->input['role']; }
-		if (isset($this->input['tabindex'])) { $this->tabindex = (int)$this->input['tabindex']; }
-		if (isset($this->input['contenteditable'])) { $this->contenteditable = (bool)$this->input['contenteditable']; }
-		if (isset($this->input['draggable'])) { $this->draggable = (bool)$this->input['draggable']; }
-		if (isset($this->input['hidden'])) { $this->hidden = (bool)$this->input['hidden']; }
-		if (isset($this->input['translate'])) { $this->translate = (bool)$this->input['translate']; }
+		if (isset($this->attributes['id'])) { $this->id = $this->attributes['id']; }
+		if (isset($this->attributes['class'])) { $this->class = $this->attributes['class']; }
+		if (isset($this->attributes['title'])) { $this->title = $this->attributes['title']; }
+		if (isset($this->attributes['style'])) { $this->style = $this->attributes['style']; }
+		if (isset($this->attributes['accesskey'])) { $this->accesskey = $this->attributes['accesskey']; }
+		if (isset($this->attributes['dropzone'])) { $this->dropzone = $this->attributes['dropzone']; }
+		if (isset($this->attributes['dir'])) { $this->dir = $this->attributes['dir']; }
+		if (isset($this->attributes['role'])) { $this->role = $this->attributes['role']; }
+		if (isset($this->attributes['tabindex'])) { $this->tabindex = (int)$this->attributes['tabindex']; }
+		if (isset($this->attributes['contenteditable'])) { $this->contenteditable = (bool)$this->attributes['contenteditable']; }
+		if (isset($this->attributes['draggable'])) { $this->draggable = (bool)$this->attributes['draggable']; }
+		if (isset($this->attributes['hidden'])) { $this->hidden = (bool)$this->attributes['hidden']; }
+		if (isset($this->attributes['translate'])) { $this->translate = (bool)$this->attributes['translate']; }
 	}
 
 	private function mapData(array|null $data): void

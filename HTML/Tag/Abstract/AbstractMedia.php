@@ -15,9 +15,9 @@ abstract class AbstractMedia extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapAbstractMedia();
 	}
 	#endregion
@@ -45,10 +45,10 @@ abstract class AbstractMedia extends Body
 	}
 	protected function mapAbstractMedia(): void
 	{
-		if (isset($this->input['src'])) { $this->src = $this->input['src']; }
-		if (isset($this->input['referrerpolicy'])) { $this->referrerpolicy = $this->input['referrerpolicy']; }
-		if (isset($this->input['width'])) { $this->width = (int)$this->input['width']; }
-		if (isset($this->input['height'])) { $this->height = (int)$this->input['height']; }
+		if (isset($this->attributes['src'])) { $this->src = $this->attributes['src']; }
+		if (isset($this->attributes['referrerpolicy'])) { $this->referrerpolicy = $this->attributes['referrerpolicy']; }
+		if (isset($this->attributes['width'])) { $this->width = (int)$this->attributes['width']; }
+		if (isset($this->attributes['height'])) { $this->height = (int)$this->attributes['height']; }
 	}
 	#endregion
 }

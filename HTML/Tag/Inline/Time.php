@@ -13,10 +13,10 @@ class Time extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Time; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapTime();
 	}
 	#endregion
@@ -35,7 +35,7 @@ class Time extends Body
 	}
 	protected function mapTime(): void
 	{
-		if (isset($this->input['datetime'])) { $this->datetime = $this->input['datetime']; }
+		if (isset($this->attributes['datetime'])) { $this->datetime = $this->attributes['datetime']; }
 	}
 	#endregion
 }

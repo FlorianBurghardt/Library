@@ -14,10 +14,10 @@ class Param extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Param; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapParam();
 	}
 	#endregion
@@ -39,8 +39,8 @@ class Param extends Body
 	}
 	protected function mapParam(): void
 	{
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['value'])) { $this->value = $this->input['value']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['value'])) { $this->value = $this->attributes['value']; }
 	}
 	#endregion
 }

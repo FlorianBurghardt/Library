@@ -23,10 +23,10 @@ class Button extends Body
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Button; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapButton();
 	}
 	#endregion
@@ -75,17 +75,17 @@ class Button extends Body
 	}
 	protected function mapButton(): void
 	{
-		if (isset($this->input['form'])) { $this->form = $this->input['form']; }
-		if (isset($this->input['formaction'])) { $this->formaction = $this->input['formaction']; }
-		if (isset($this->input['formenctype'])) { $this->formenctype = $this->input['formenctype']; }
-		if (isset($this->input['formmethod'])) { $this->formmethod = $this->input['formmethod']; }
-		if (isset($this->input['formtarget'])) { $this->formtarget = $this->input['formtarget']; }
-		if (isset($this->input['name'])) { $this->name = $this->input['name']; }
-		if (isset($this->input['type'])) { $this->type = $this->input['type']; }
-		if (isset($this->input['value'])) { $this->value = $this->input['value']; }
-		if (isset($this->input['autofocus'])) { $this->autofocus = (bool)$this->input['autofocus']; }
-		if (isset($this->input['disabled'])) { $this->disabled = (bool)$this->input['disabled']; }
-		if (isset($this->input['formnovalidate'])) { $this->formnovalidate = (bool)$this->input['formnovalidate']; }
+		if (isset($this->attributes['form'])) { $this->form = $this->attributes['form']; }
+		if (isset($this->attributes['formaction'])) { $this->formaction = $this->attributes['formaction']; }
+		if (isset($this->attributes['formenctype'])) { $this->formenctype = $this->attributes['formenctype']; }
+		if (isset($this->attributes['formmethod'])) { $this->formmethod = $this->attributes['formmethod']; }
+		if (isset($this->attributes['formtarget'])) { $this->formtarget = $this->attributes['formtarget']; }
+		if (isset($this->attributes['name'])) { $this->name = $this->attributes['name']; }
+		if (isset($this->attributes['type'])) { $this->type = $this->attributes['type']; }
+		if (isset($this->attributes['value'])) { $this->value = $this->attributes['value']; }
+		if (isset($this->attributes['autofocus'])) { $this->autofocus = (bool)$this->attributes['autofocus']; }
+		if (isset($this->attributes['disabled'])) { $this->disabled = (bool)$this->attributes['disabled']; }
+		if (isset($this->attributes['formnovalidate'])) { $this->formnovalidate = (bool)$this->attributes['formnovalidate']; }
 	}
 	#endregion
 }

@@ -16,10 +16,10 @@ class Area extends AbstractLink
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::Area; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapArea();
 	}
 	#endregion
@@ -47,10 +47,10 @@ class Area extends AbstractLink
 	}
 	protected function mapArea(): void
 	{
-		if (isset($this->input['alt'])) { $this->alt = $this->input['alt']; }
-		if (isset($this->input['coords'])) { $this->coords = $this->input['coords']; }
-		if (isset($this->input['shape'])) { $this->shape = $this->input['shape']; }
-		if (isset($this->input['download'])) { $this->download = (bool)$this->input['download']; }
+		if (isset($this->attributes['alt'])) { $this->alt = $this->attributes['alt']; }
+		if (isset($this->attributes['coords'])) { $this->coords = $this->attributes['coords']; }
+		if (isset($this->attributes['shape'])) { $this->shape = $this->attributes['shape']; }
+		if (isset($this->attributes['download'])) { $this->download = (bool)$this->attributes['download']; }
 	}
 	#endregion
 }

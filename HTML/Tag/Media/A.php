@@ -14,10 +14,10 @@ class A extends AbstractLink
 	#endregion
 
 	#region constructor
-    public function __construct(array|null $input = null)
+    public function __construct(array|null $attributes = null)
 	{
 		if (!isset($this->tagType)) { $this->tagType = TagList::A; }
-		parent::__construct($input);
+		parent::__construct($attributes);
 		$this->mapA();
 	}
 	#endregion
@@ -39,8 +39,8 @@ class A extends AbstractLink
 	}
 	protected function mapA(): void
 	{
-		if (isset($this->input['ping'])) { $this->ping = $this->input['ping']; }
-		if (isset($this->input['download'])) { $this->download = (bool)$this->input['download']; }
+		if (isset($this->attributes['ping'])) { $this->ping = $this->attributes['ping']; }
+		if (isset($this->attributes['download'])) { $this->download = (bool)$this->attributes['download']; }
 	}
 	#endregion
 }
